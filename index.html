@@ -3,30 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="css/style.css" />
-  <title>안마침대 가이드</title>
+  <title>안마침대 기능 안내</title>
 </head>
 <body>
-  <div id="main-screen">
-    <video id="promo-video" autoplay muted loop playsinline preload="auto">
-      <source src="videos/test.mp4" type="video/mp4" />
-      브라우저가 video 태그를 지원하지 않습니다.
-    </video>
-    <div id="overlay" onclick="navigateToMenu()"></div>
-  </div>
-
-  <div id="menu-screen" style="display:none;">
-    <h1>안마침대 사용가이드</h1>
-    <button onclick="openModal('videos/test.mp4')">기능 안내 영상</button>
-  </div>
-
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <button class="close" onclick="closeModal()">✕</button>
-      <video id="modal-video" width="100%" controls>
-        <source src="" type="video/mp4" />
+  <div class="container">
+    <div id="video-section" class="video-section">
+      <video id="intro-video" class="video" autoplay muted playsinline>
+        <source src="videos/test.mp4" type="video/mp4" />
+        브라우저가 video 태그를 지원하지 않습니다.
       </video>
+      <button id="close-video-btn" class="close-btn">×</button>
+      <div id="time-weather" class="time-weather"></div>
+    </div>
+
+    <div id="menu-section" class="menu-section hidden">
+      <h1>안마 기능 안내</h1>
+      <div class="menu-buttons">
+        <button class="menu-btn" data-video="test.mp4">기능 안내 영상</button>
+        <button class="menu-btn" data-video="test.mp4">마사지 프로그램</button>
+        <button class="menu-btn" data-video="test.mp4">사용 방법</button>
+        <button class="menu-btn" data-video="test.mp4">주의 사항</button>
+      </div>
     </div>
   </div>
 
