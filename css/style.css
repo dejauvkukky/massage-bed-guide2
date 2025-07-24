@@ -1,90 +1,84 @@
-body, html {
+body {
   margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Arial', sans-serif;
-  background-color: #000;
-  color: #fff;
+  font-family: sans-serif;
+  background: black;
+  color: white;
   overflow: hidden;
 }
 
-.container {
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-
-.video-section {
-  position: relative;
+#video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background: black;
+  z-index: 1000;
 }
 
-.video {
+#video-overlay video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.close-btn {
+#menu {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 2rem;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  cursor: pointer;
-  z-index: 2;
-}
-
-.time-weather {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 1rem;
-  background: rgba(0,0,0,0.5);
-  padding: 6px 12px;
-  border-radius: 8px;
-  z-index: 2;
-}
-
-.menu-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  background: #111;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
 }
 
-.menu-section.hidden {
-  display: none;
+#menu ul {
+  list-style: none;
+  padding: 0;
 }
 
-.menu-buttons {
+#menu li {
+  margin: 20px;
+}
+
+#menu a {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+}
+
+#modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1100;
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 24px;
+  justify-content: center;
+  align-items: center;
 }
 
-.menu-btn {
-  background-color: #444;
-  color: #fff;
-  border: none;
-  padding: 14px 28px;
-  font-size: 1.1rem;
-  border-radius: 8px;
+#modal video {
+  width: 90%;
+  max-height: 80%;
+}
+
+#modal-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-.menu-btn:hover {
-  background-color: #666;
+#clock {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 16px;
+  color: white;
+  z-index: 2000;
+}
+
+.hidden {
+  display: none;
 }
