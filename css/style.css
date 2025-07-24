@@ -1,65 +1,90 @@
 body, html {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
 }
-#main-screen {
+
+.container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.video-section {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  background-color: #000;
 }
-#promo-video {
+
+.video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-#overlay {
+
+.close-btn {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  z-index: 10;
+  top: 20px;
+  right: 20px;
+  font-size: 2rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  z-index: 2;
 }
-#menu-screen {
-  padding: 20px;
+
+.time-weather {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1rem;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: #111;
   text-align: center;
 }
 
-.modal {
+.menu-section.hidden {
   display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
 }
 
-.modal-content {
-  position: relative;
-  margin: 5% auto;
-  width: 90%;
-  max-width: 600px;
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #f44336;
-  color: white;
+.menu-btn {
+  background-color: #444;
+  color: #fff;
   border: none;
-  border-radius: 50%;
-  font-size: 20px;
-  width: 36px;
-  height: 36px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
-  z-index: 10000;
+  transition: background 0.3s;
 }
 
+.menu-btn:hover {
+  background-color: #666;
+}
