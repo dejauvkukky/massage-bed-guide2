@@ -1,42 +1,35 @@
-const video = document.getElementById("intro-video");
-const closeBtn = document.getElementById("close-video-btn");
-const menuSection = document.getElementById("menu-section");
-const videoSection = document.getElementById("video-section");
-const timeWeather = document.getElementById("time-weather");
-
-function updateTimeWeather() {
+// 현재 시각 표시
+function updateClock() {
   const now = new Date();
-  const hours = String(now.getHours()).padStart(2, "0");
-  const minutes = String(now.getMinutes()).padStart(2, "0");
-
-  // 실제 날씨 API를 연결하려면 서버단 필요함. 현재는 더미 텍스트 사용
-  const weather = "맑음";
-
-  timeWeather.textContent = `${hours}:${minutes} / ${weather}`;
+  const clock = document.getElementById("clock");
+  const timeString = now.toLocaleTimeString("ko-KR", { hour: '2-digit', minute: '2-digit' });
+  clock.textContent = timeString;
 }
+setInterval(updateClock, 1000);
+updateClock();
 
-setInterval(updateTimeWeather, 10000);
-updateTimeWeather();
+// 오버레이 영상
+const overlay = document.getElementById("video-overlay");
+const introVideo = document.getElementById("introVideo");
 
-video.addEventListener("ended", () => {
-  videoSection.classList.add("hidden");
-  menuSection.classList.remove("hidden");
+// 사용자 터치 시 닫기
+overlay.addEventListener("touchstart", () => {
+  overlay.classList.remove("active");
+  overlay.classList.add("hidden");
+  document.getElementById("menu").classList.remove("hidden");
 });
 
-closeBtn.addEventListener("click", () => {
-  video.pause();
+// 메뉴에서 안내영상 보기
+function playVideo() {
+  const modal = document.getElementById("modal");
+  const video = document.getElementById("manualVideo");
+  modal.classList.remove("hidden");
   video.currentTime = 0;
-  videoSection.classList.add("hidden");
-  menuSection.classList.remove("hidden");
-});
+  video.play();
 
-document.querySelectorAll(".menu-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const videoFile = btn.dataset.video;
-    video.querySelector("source").src = "videos/" + videoFile;
-    video.load();
-    video.play();
-    menuSection.classList.add("hidden");
-    videoSection.classList.remove("hidden");
-  });
-});
+  // 모달 바깥 터치 시 닫기
+  document.getElementById("modal-bg").onclick = () => {
+    video.pause();
+    modal.classList.add("hidden");
+  };
+}
